@@ -4,11 +4,14 @@
 > 下载 <br/>
 > git clone https://github.com/develon2015/uclib.git <br/>
 
+> 更新 <br/>
+> cd uclib && git pull <br/>
+
 > 使用头文件: <br/>
 > #include <uclib/inc/net.h> <br/>
 
-> 添加静态库uclib.a以编译: <br/>
-> gcc \*.c uclib/uclib.a <br/>
+> 添加头文件搜索路径.和静态库uclib.a以编译: <br/>
+> gcc \*.c  `-I. uclib/uclib.a`<br/>
 
 ### 测试
 ```
