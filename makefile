@@ -1,21 +1,21 @@
 # makefile
 VPATH=test:net
 
-MultiTarget: bin t
+MultiTarget: uclib.a t
 	@echo OK
 
-t: test/*.c uclib.a
+src_t = $(wildcard test/*.c)
+t: $(src_t) uclib.a
 	$(CC) -o t $^ -Iinc -ldl -rdynamic
 
-bin:
-	mkdir bin
-
-uclib.a: net/*.c
+src_uclib = $(wildcard net/*.c)
+uclib.a: $(src_uclib)
 	$(CC) -c $^ -Iinc
-	mv *.o bin
+	mkdir bin && mv *.o bin
 	ar rcs $@ bin/*.o
 
 .PHONY:clean
 clean:
+	@-rm *.o
 	@-rm -rf bin
 	@-rm t uclib.a
