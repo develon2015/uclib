@@ -7,3 +7,7 @@
 int
 resolveIP(const char *domain, int type, void *addr_t);
 
+// IPv6判断
+int
+isIPv6Supported();
+

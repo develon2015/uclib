@@ -20,6 +20,6 @@ uclib.a: $(src_uclib)
 
 .PHONY:clean
 clean:
-	@-rm *.o
-	@-rm -rf bin
-	@-rm t uclib.a
+	rm -rf *.o
+	rm -rf bin
+	rm -rf t uclib.a
