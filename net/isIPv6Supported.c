@@ -17,15 +17,15 @@ isIPv6Supported() {
 	struct sockaddr_in6 localipv6 = { 0 };
 	localipv6.sin6_family = AF_INET6;
 	localipv6.sin6_port = htons(0);
-	if (inet_pton(AF_INET6, "::1", (void *)&localipv6.sin6_addr) != 1) {
+	if (inet_pton(AF_INET6, "::2", (void *)&localipv6.sin6_addr) != 1) {
 		perror("pton");
 		return 0;
 	}
 	if (connect(sfd, (struct sockaddr *)&localipv6, sizeof localipv6) != 0) {
 		printf("connect: %d %s\n", errno, strerror(errno));
 		if (errno == ENETUNREACH)
-			return 0;
+			return 1;
 	}
-	return 1;
+	return 0;
 }
 
